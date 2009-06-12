@@ -8,6 +8,7 @@ This was intended for use at work to anthropromorphize our iMacs. They tend to a
 h2. Requirements
 
 Ruby with the 'twibot' gem installed
+
 Mac OS X with a working 'say' command
 
 h2. Instructions:
@@ -16,7 +17,7 @@ Put these files into ~/Library/Scripts/twittersay/
 
 Edit the config/bot.yml file to have your twitter account credentials
 
-put everything after this line into your ~/.bash_profile (or bash_login, bashrc, etc ):
+put the following code into your ~/.bash_profile (or bash_login, bashrc, etc ):
 
 <pre>
 <code>
