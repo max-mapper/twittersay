@@ -18,6 +18,8 @@ Edit the config/bot.yml file to have your twitter account credentials
 
 put everything after this line into your ~/.bash_profile (or bash_login, bashrc, etc ):
 
+<pre>
+<code>
 twittersaypid=~/Library/Scripts/twittersay/TwitterSay.pid
 if [ ! -f ~/Library/Scripts/twittersay/TwitterSay.pid ]
 then
@@ -28,3 +30,5 @@ echo "Started TwitterSay"
 else
 echo "TwitterSay is running..." 
 fi
+</code>
+</pre>
