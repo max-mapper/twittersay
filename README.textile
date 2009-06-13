@@ -1,27 +1,34 @@
 h1. TwitterSay
 
-This program receives DMs on twitter from a specified account and executes a say command in terminal that will speak the actual text from the dm (It polls Twitter every 25 seconds or so which is the Twitter API rate limit).
-Every time you open a terminal window it will start a daemon that listens for DMs.
+This program receives DMs on twitter from a specified account and executes a say command in terminal that will speak the actual text from the dm. It polls Twitter every 25 seconds or so which is the Twitter API rate limit. Every time you open a terminal window it will start a daemon that listens for DMs.
 
 This was intended for use at work to anthropromorphize our iMacs. They tend to always be on and we use terminal quite often so the daemon is usually activated. If you exit out of terminal the daemon should still be running.
 
+This can also be used to run commands other than say. Simply edit the line in twittersay.rb that handles when a message is received.
+
 h2. Requirements
 
-Ruby with the 'twibot' gem installed
-
-Mac OS X with a working 'say' command
+Ruby with the 'twibot' gem installed.
+Mac with working 'say' command
 
 h2. Instructions:
 
-Put these files into ~/Library/Scripts/twittersay/
+<pre>
+<code>
+mkdir ~/Library/Scripts/
+cd ~/Library/Scripts/
+git clone git://github.com/maxogden/twittersay.git
+</code>
+</pre>
 
 Edit the config/bot.yml file to have your twitter account credentials
 
-put the following code into your ~/.bash_profile (or bash_login, bashrc, etc ):
+I couldn't get say commands to output sound when running the process as a launch daemon, so I have implemented the following bash_profile trickery for daemonization.
+
+Put this code into your ~/.bash_profile (or bash_login, bashrc, etc ):
 
 <pre>
 <code>
-twittersaypid=~/Library/Scripts/twittersay/TwitterSay.pid
 if [ ! -f ~/Library/Scripts/twittersay/TwitterSay.pid ]
 then
 cd ~/Library/Scripts/twittersay
@@ -29,7 +36,7 @@ ruby twittersay.rb start
 cd ~/
 echo "Started TwitterSay"
 else
-echo "TwitterSay is running..." 
+echo "TwitterSay is running" 
 fi
 </code>
 </pre>
